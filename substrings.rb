@@ -1,15 +1,21 @@
-def substrings(string, dictionary)
-	container = Hash.new(0)
+class Substring
+	attr_accessor :string, :dictionary, :container
 	
-	string.downcase.split(/[^\w]+/).each do |word|
-		dictionary.each do |substring|
-			container[substring] += 1 if word[substring]
-		end
+	def initialize(string, dictionary)
+		@string = string.downcase.split(/[^\w]+/)
+		@dictionary = dictionary.downcase.split(/[^\w]+/)
+		@container = Hash.new(0)
 	end
-	puts container
+	
+	def check
+		@string.each do |word|
+			@dictionary.each do |substring|
+				@container[substring] += 1 if word[substring]
+			end
+		end
+		puts @container
+	end
 end
 
-dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
-
-substrings("below", dictionary)
-substrings("Howdy partner, sit down! How's it going partner?", dictionary)
+substring = Substring.new("Hello World, Hello Universe!", "Hello Run Walk World");
+substring.check
