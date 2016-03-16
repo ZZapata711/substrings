@@ -17,5 +17,10 @@ class Substring
 	end
 end
 
-substring = Substring.new("Hello World, Hello Universe!", "Hello Run Walk World");
+print "Input sentence to be checked, with each word separated by a space: "
+string = gets.chomp
+print "List of words to be included in dictionary, with each word separated by a space: " 
+dictionary = gets.chomp
+
+substring = Substring.new(string, dictionary)
 substring.check
